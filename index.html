@@ -646,10 +646,260 @@
         }
 
         @media (max-width: 768px) {
-            .nav-inner { padding: 0 8px; }
-            .rounds-grid { gap: 20px; }
-            .card { padding: 28px; }
-            header { min-height: 70vh; }
+            .nav-inner { 
+                padding: 0 8px; 
+                height: 56px;
+            }
+            
+            .logo {
+                font-size: 0.9rem;
+                letter-spacing: 0.2px;
+            }
+            
+            .logo-img {
+                height: 36px;
+                padding: 4px;
+            }
+            
+            .brand-icon {
+                height: 18px;
+                padding: 3px;
+            }
+            
+            .nav-links {
+                gap: 10px;
+                padding: 6px 12px;
+                border-radius: 12px;
+            }
+            
+            .nav-links a {
+                padding: 6px 10px;
+                font-size: 0.9rem;
+            }
+            
+            .theme-toggle {
+                height: 28px;
+                padding: 0 8px;
+                font-size: 0.8rem;
+            }
+            
+            .rounds-grid { 
+                gap: 15px;
+                grid-template-columns: 1fr;
+            }
+            
+            .card { 
+                padding: 20px;
+            }
+            
+            .card h3 {
+                font-size: 1.1rem;
+            }
+            
+            .card p {
+                font-size: 0.95rem;
+            }
+            
+            header { 
+                min-height: 60vh;
+                padding: 40px 15px 15px 15px;
+            }
+            
+            .hero-logo {
+                width: clamp(180px, 70vw, 280px);
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            
+            h1 {
+                font-size: clamp(1.8rem, 5vw, 2.5rem);
+                margin-top: 10px;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+                margin-top: 5px;
+            }
+            
+            .btn-register {
+                padding: 12px 30px;
+                font-size: 0.95rem;
+                margin-top: 20px;
+            }
+            
+            .ticker-bar {
+                font-size: 0.7rem;
+            }
+            
+            .ticker {
+                gap: 40px;
+                padding: 8px 0;
+            }
+            
+            .section-title {
+                font-size: clamp(1.4rem, 4vw, 1.8rem);
+                margin: 40px 0 25px;
+            }
+            
+            .section-title::after {
+                width: 60px;
+                height: 3px;
+                margin: 10px auto 0;
+            }
+            
+            .sponsor-grid {
+                gap: 10px;
+            }
+            
+            .sponsor-box {
+                width: 120px;
+                height: 70px;
+                font-size: 0.85rem;
+            }
+            
+            .collage-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 12px;
+            }
+            
+            .collage-item {
+                min-height: 140px;
+                font-size: 0.8rem;
+                padding: 10px;
+            }
+            
+            .content-card {
+                padding: 20px;
+            }
+            
+            .content-card p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+            
+            .challenge-list li {
+                margin: 12px 0;
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+            
+            .social-section {
+                margin: 50px 0 30px;
+            }
+            
+            .social-title {
+                font-size: 1.4rem;
+                margin-bottom: 25px;
+            }
+            
+            .social-container {
+                gap: 25px;
+                padding: 20px;
+            }
+            
+            .social-link {
+                width: 65px;
+                height: 65px;
+                font-size: 1.8rem;
+            }
+            
+            .notice-bar {
+                width: min(100%, 96%);
+                bottom: 10px;
+                padding: 10px 14px;
+                font-size: 0.85rem;
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .notice-text {
+                font-size: 0.85rem;
+                text-align: center;
+            }
+            
+            .notice-bar-alt {
+                bottom: 70px;
+            }
+            
+            footer {
+                padding: 30px 15px;
+                font-size: 0.75rem;
+            }
+            
+            .container {
+                width: min(100%, 95%);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-inner { 
+                padding: 0 6px;
+                height: 52px;
+            }
+            
+            .logo-group {
+                gap: 6px;
+                padding: 6px 10px;
+            }
+            
+            .logo {
+                font-size: 0.75rem;
+                letter-spacing: 0px;
+            }
+            
+            .nav-links {
+                gap: 8px;
+                padding: 5px 10px;
+            }
+            
+            .nav-links a {
+                padding: 5px 8px;
+                font-size: 0.8rem;
+            }
+            
+            header { 
+                min-height: 55vh;
+                padding: 35px 10px 10px 10px;
+            }
+            
+            .hero-logo {
+                width: clamp(150px, 65vw, 240px);
+                padding: 12px;
+                margin-bottom: 10px;
+            }
+            
+            h1 {
+                font-size: clamp(1.4rem, 4vw, 2rem);
+                margin-top: 8px;
+            }
+            
+            .subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .btn-register {
+                padding: 10px 25px;
+                font-size: 0.85rem;
+            }
+            
+            .ticker {
+                gap: 30px;
+            }
+            
+            .section-title {
+                font-size: clamp(1.2rem, 3vw, 1.6rem);
+                margin: 30px 0 20px;
+            }
+            
+            .social-link {
+                width: 60px;
+                height: 60px;
+                font-size: 1.6rem;
+            }
+            
+            .social-container {
+                gap: 20px;
+            }
         }
 
         footer {
