@@ -1455,6 +1455,17 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        // Initialize theme - Default to dark mode
+        var savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+            // Ensure dark mode is the default
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'dark');
+        }
+
+        // Notification bars
         var bars = document.querySelectorAll('.notice-bar');
         bars.forEach(function (bar) { bar.classList.add('show'); });
         var closeBtns = document.querySelectorAll('.notice-close');
@@ -1467,19 +1478,23 @@
                 }
             });
         });
-        var savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') { document.documentElement.setAttribute('data-theme', 'light'); }
+
+        // Theme toggle
         var toggle = document.getElementById('theme-toggle');
-        if (toggle) toggle.addEventListener('click', function () {
-            var isLight = document.documentElement.getAttribute('data-theme') === 'light';
-            if (isLight) {
-                document.documentElement.removeAttribute('data-theme');
-                localStorage.removeItem('theme');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'light');
-                localStorage.setItem('theme', 'light');
-            }
-        });
+        if (toggle) {
+            toggle.addEventListener('click', function () {
+                var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+                if (isLight) {
+                    // Switch to dark mode
+                    document.documentElement.removeAttribute('data-theme');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    // Switch to light mode
+                    document.documentElement.setAttribute('data-theme', 'light');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+        }
     });
 </script>
 
