@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startup Forge 1.0 | Ignite the Founder in You</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff8c00;
+            --secondary: #ffd700;
+            --accent: #00d4ff;
+            --bg-dark: #0a0a0c;
+            --glass: rgba(255, 255, 255, 0.05);
+            --text-muted: rgba(255,255,255,0.7);
+            --surface: rgba(255,255,255,0.02);
+            --text-color: #ffffff;
+        }
+        [data-theme="light"] {
+            --bg-dark: #f7f7fb;
+            --text-color: #0a0a0c;
+            --glass: rgba(0, 0, 0, 0.06);
+            --surface: rgba(0,0,0,0.03);
+            --text-muted: rgba(10,10,12,0.7);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-color);
+            overflow-x: hidden;
+            padding-bottom: 160px;
+        }
+        html { scroll-behavior: smooth; }
+
+        .container {
+            width: min(1100px, 90%);
+            margin: 0 auto;
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(10px);
+            background: rgba(10,10,12,0.6);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-img {
+            height: 48px;
+            width: auto;
+            border-radius: 8px;
+            filter: drop-shadow(0 0 6px rgba(255,140,0,0.3));
+        }
+        .brand-icons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .brand-icon {
+            height: 24px;
+            width: auto;
+            border-radius: 6px;
+            opacity: 0.8;
+            transition: 0.2s;
+        }
+        .logo-group .brand-icon:hover {
+            opacity: 1;
+            transform: scale(1.03);
+        }
+        @media (max-width: 768px) {
+            .brand-icons { display: none; }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 10px;
+        }
+
+        .nav-links a:hover {
+            background: var(--glass);
+        }
+        .theme-toggle {
+            border: 1px solid rgba(255,255,255,0.12);
+            background: var(--glass);
+            color: var(--text-color);
+            height: 32px;
+            padding: 0 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background:
+                radial-gradient(circle at 10% 20%, rgba(255, 140, 0, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        .ticker-bar {
+            background: linear-gradient(90deg, var(--primary), #ff4500);
+            color: #000;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(0,0,0,0.2);
+        }
+
+        .ticker {
+            white-space: nowrap;
+            display: flex;
+            gap: 60px;
+            animation: ticker 18s linear infinite;
+            padding: 10px 0;
+        }
+        .ticker:hover { animation-play-state: paused; }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        header {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero-logo {
+            width: clamp(220px, 28vw, 340px);
+            filter: drop-shadow(0 0 20px var(--primary));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-top: 20px;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin: 60px 0 40px;
+            color: var(--secondary);
+        }
+
+        .rounds-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 20px;
+            transition: 0.4s;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08),
+                        0 8px 24px rgba(255,140,0,0.06);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.2);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-family: 'Orbitron';
+        }
+
+        .sponsor-container {
+            margin: 40px 0;
+            background: var(--surface);
+            padding: 24px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .sponsor-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .sponsor-box {
+            width: 150px;
+            height: 90px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed rgba(255,255,255,0.2);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .sponsor-box:hover {
+            background: rgba(255,255,255,0.15);
+            border-style: solid;
+        }
+
+        .sponsor-logo {
+            max-width: 120px;
+            max-height: 60px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            filter: grayscale(10%);
+            transition: 0.3s;
+        }
+
+        .sponsor-container .section-title {
+            margin: 0 0 12px;
+        }
+
+        .sponsor-box:hover .sponsor-logo {
+            filter: none;
+            transform: scale(1.04);
+        }
+        .form-wrapper {
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .form-wrapper img {
+            width: 320px;
+            border-radius: 25px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .form-wrapper img:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 30px var(--primary);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .btn-register {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+            font-family: 'Orbitron';
+            margin-top: 30px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .btn-register:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px var(--primary);
+        }
+
+        .btn-register:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-inner { padding: 0 8px; }
+            .rounds-grid { gap: 20px; }
+            .card { padding: 28px; }
+            header { min-height: 70vh; }
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            opacity: 0.5;
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+        [data-theme="light"] footer { border-top-color: rgba(0,0,0,0.08); }
+        .section-divider {
+            height: 1px;
+            background: rgba(255,255,255,0.08);
+            margin: 30px 0;
+        }
+        [data-theme="light"] .section-divider { background: rgba(0,0,0,0.08); }
+
+        .notice-bar {
+            position: fixed;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%) translateY(120%);
+            width: min(1100px, 92%);
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            z-index: 60;
+            transition: transform .4s ease;
+        }
+
+        .notice-bar.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .notice-text {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .notice-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .notice-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .notice-link:hover {
+            text-decoration: underline;
+        }
+
+        .notice-close {
+            width: 36px;
+            height: 36px;
+            border: none;
+            border-radius: 10px;
+            background: var(--glass);
+            color: var(--text-color);
+            font-size: 18px;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .notice-close:hover {
+            background: rgba(255,255,255,0.14);
+        }
+
+        .notice-bar-alt {
+            bottom: 80px;
+            background: linear-gradient(90deg, var(--primary), #ff4500);
+            border-color: rgba(0,0,0,0.2);
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="bg-glow"></div>
+
+<nav class="nav">
+    <div class="container nav-inner">
+        <div class="logo-group">
+            <div class="brand-icons">
+                <img src="2.jpeg" alt="Logo 2" class="brand-icon">
+                <img src="3.jpeg" alt="Logo 3" class="brand-icon">
+            </div>
+            <img src="1.jpeg" alt="Startup Forge Logo" class="logo-img">
+            <span class="logo">STARTUP FORGE</span>
+            <div class="brand-icons">
+                <img src="4.jpeg" alt="Logo 4" class="brand-icon">
+                <img src="5.jpeg" alt="Logo 5" class="brand-icon">
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="#challenge">Challenge</a>
+            <a href="#register">Register</a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">Theme</button>
+        </div>
+    </div>
+</nav>
+
+<div class="ticker-bar">
+    <div class="ticker">
+        <span>🔥 STARTUP FORGE 1.0 - LAST DATE FOR IDEA SUBMISSION: 23 MARCH</span>
+        <span>HEAT ROUND: 26 MARCH</span>
+        <span>HAMMER ROUND: 27 MARCH</span>
+        <span>FORGE ROUND: 28 MARCH</span>
+        <span>🔥 STARTUP FORGE 1.0 - LAST DATE FOR IDEA SUBMISSION: 23 MARCH</span>
+        <span>HEAT ROUND: 26 MARCH</span>
+        <span>HAMMER ROUND: 27 MARCH</span>
+        <span>FORGE ROUND: 28 MARCH</span>
+    </div>
+</div>
+
+<header>
+    <img src="1.jpeg" alt="Forge Logo" class="hero-logo">
+    <h1>STARTUP FORGE 1.0</h1>
+    <p class="subtitle">The Startup Arena for NextGen Founders</p>
+    <a href="#register" class="btn-register">REGISTER NOW</a>
+</header>
+
+<h2 id="challenge" class="section-title">THE CHALLENGE</h2>
+
+<div class="container">
+    <div class="rounds-grid">
+        <div class="card">
+            <h3>🔥 HEAT ROUND</h3>
+            <p><strong>26 March:</strong> Idea Screening based on originality and feasibility.</p>
+        </div>
+
+        <div class="card">
+            <h3>🔨 HAMMER ROUND</h3>
+            <p><strong>27 March:</strong> Structured PPT Pitching + Q&A Session.</p>
+        </div>
+
+        <div class="card">
+            <h3>⚔️ FORGE ROUND</h3>
+            <p><strong>28 March:</strong> Real-time Business Challenge & Strategic Pivot.</p>
+        </div>
+    </div>
+</div>
+
+<div id="register">
+    <h2 class="section-title">SUBMIT YOUR IDEA</h2>
+
+    <div class="form-wrapper">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScqXxIQY2hXhCESrUm_Xa6oMqgiiTNyq3MsMwqWSseqja0hvQ/viewform"
+           target="_blank">
+            <img src="5.jpeg" alt="Register Now">
+        </a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="sponsor-container">
+        <h2 class="section-title">PARTNERS</h2>
+        <div class="sponsor-grid">
+            <div class="sponsor-box">Partner</div>
+            <div class="sponsor-box">Sponsor</div>
+            <div class="sponsor-box">Community</div>
+            <div class="sponsor-box">Media</div>
+        </div>
+    </div>
+    </div>
+
+<div class="container"><div class="section-divider"></div></div>
+
+<footer>
+    MICROTEK GROUP OF INSTITUTIONS | JAUNPUR - VARANASI
+</footer>
+
+<div id="notice-bar" class="notice-bar" role="region" aria-label="Notification">
+    <div class="notice-text">Submissions close 23 March. Don’t miss your chance.</div>
+    <div class="notice-actions">
+        <a href="#register" class="notice-link">Register now</a>
+        <button class="notice-close" aria-label="Dismiss">×</button>
+    </div>
+    </div>
+
+<div id="notice-bar-2" class="notice-bar notice-bar-alt" role="region" aria-label="Notification">
+    <div class="notice-text">New speakers announced. View agenda for details.</div>
+    <div class="notice-actions">
+        <a href="#challenge" class="notice-link">View details</a>
+        <button class="notice-close" aria-label="Dismiss">×</button>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var bars = document.querySelectorAll('.notice-bar');
+        bars.forEach(function (bar) { bar.classList.add('show'); });
+        var closeBtns = document.querySelectorAll('.notice-close');
+        closeBtns.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var bar = btn.closest('.notice-bar');
+                if (bar) {
+                    bar.classList.remove('show');
+                    bar.style.display = 'none';
+                }
+            });
+        });
+        var savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') { document.documentElement.setAttribute('data-theme', 'light'); }
+        var toggle = document.getElementById('theme-toggle');
+        if (toggle) toggle.addEventListener('click', function () {
+            var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+            if (isLight) {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.removeItem('theme');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
