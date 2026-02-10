@@ -61,6 +61,7 @@
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255,255,255,0.2);
             animation: navGlow 3s ease-in-out infinite;
+            overflow: hidden;
         }
 
         @keyframes navGlow {
@@ -92,6 +93,7 @@
             justify-content: space-between;
             height: 64px;
             position: relative;
+            overflow: hidden;
         }
 
         .nav-inner::before {
@@ -118,6 +120,7 @@
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
             letter-spacing: 0.5px;
+            white-space: nowrap;
         }
         .logo-group {
             display: flex;
@@ -130,6 +133,10 @@
             border: 1px solid rgba(255,255,255,0.15);
             transition: 0.3s ease;
             animation: logoFloat 3s ease-in-out infinite;
+            max-height: 52px;
+            overflow: hidden;
+            flex: 1;
+            min-width: 0;
         }
 
         .logo-group:hover {
@@ -152,7 +159,7 @@
             border-color: rgba(0,0,0,0.15);
         }
         .logo-img {
-            height: 48px;
+            height: 44px;
             width: auto;
             border-radius: 8px;
             filter: drop-shadow(0 0 6px rgba(255,140,0,0.3));
@@ -185,7 +192,7 @@
             gap: 8px;
         }
         .brand-icon {
-            height: 24px;
+            height: 26px;
             width: auto;
             border-radius: 6px;
             opacity: 0.8;
@@ -223,12 +230,14 @@
         .nav-links {
             display: flex;
             gap: 20px;
+            flex-wrap: nowrap;
             background: rgba(255,255,255,0.08);
             backdrop-filter: blur(8px);
             padding: 8px 16px;
             border-radius: 16px;
             border: 1px solid rgba(255,255,255,0.15);
             transition: 0.3s ease;
+            flex-shrink: 0;
         }
 
         .nav-links:hover {
@@ -255,6 +264,7 @@
             transition: 0.3s ease;
             position: relative;
             overflow: hidden;
+            white-space: nowrap;
         }
 
         .nav-links a::before {
@@ -394,7 +404,7 @@
         }
 
         .hero-logo {
-            width: clamp(220px, 28vw, 340px);
+            width: clamp(280px, 35vw, 420px);
             filter: drop-shadow(0 0 20px var(--primary));
             animation: softSpin 4s ease-in-out infinite;
             border-radius: 25px;
@@ -899,6 +909,15 @@
             
             .social-container {
                 gap: 20px;
+            }
+            
+            .notice-bar,
+            .notice-bar-alt {
+                display: none !important;
+            }
+            
+            body {
+                padding-bottom: 0;
             }
         }
 
@@ -1542,6 +1561,31 @@
             width: 300px;
             height: 300px;
         }
+
+        .bottom-image-section {
+            width: 100%;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 80px;
+            margin-bottom: 80px;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(0, 255, 213, 0.1), rgba(0, 212, 255, 0.1));
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+        .bottom-image-section img {
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            aspect-ratio: auto;
+            object-fit: contain;
+            display: block;
+            border-radius: 15px;
+            box-shadow: 0 0 40px rgba(255, 140, 0, 0.3), 0 0 80px rgba(0, 212, 255, 0.2);
+        }
     </style>
 </head>
 
@@ -1552,21 +1596,16 @@
 <nav class="nav">
     <div class="container nav-inner">
         <div class="logo-group">
-            <div class="brand-icons">
-                <img src="2.jpeg" alt="Logo 2" class="brand-icon">
-                <img src="3.jpeg" alt="Logo 3" class="brand-icon">
-            </div>
             <img src="1.jpeg" alt="Startup Forge Logo" class="logo-img">
             <span class="logo">STARTUP FORGE</span>
             <div class="brand-icons">
                 <img src="4.jpeg" alt="Logo 4" class="brand-icon">
-                <img src="5.jpeg" alt="Logo 5" class="brand-icon">
             </div>
         </div>
         <div class="nav-links">
             <a href="#challenge">Challenge</a>
-            <a href="#register">Register</a>
-            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">Theme</button>
+            <a href="https://forms.gle/odoVM2YvhtGzvnEr8" target="_blank" rel="noopener noreferrer">Register</a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
         </div>
     </div>
 </nav>
@@ -1668,14 +1707,14 @@
     <div class="social-section">
         <h2 class="social-title">FOLLOW US</h2>
         <div class="social-container">
-            <a href="https://www.instagram.com/abhinandan_singh_rajput_295?igsh=Z290ZDl6MTVxaDc2" target="_blank" rel="noopener noreferrer" class="social-link instagram" title="Instagram" aria-label="Instagram">
+            <a href="https://www.instagram.com/forge_startup1.0" target="_blank" rel="noopener noreferrer" class="social-link instagram" title="Instagram" aria-label="Instagram">
                 <img src="8.jpeg" alt="Instagram" class="social-icon">
             </a>
-            <a href="https://www.facebook.com/share/1Afvm4ZD3i/" target="_blank" rel="noopener noreferrer" class="social-link facebook" title="Facebook" aria-label="Facebook">
+            <a href="https://www.facebook.com/share/1GqkVUjN6K/" target="_blank" rel="noopener noreferrer" class="social-link facebook" title="Facebook" aria-label="Facebook">
                 <img src="9.jpeg" alt="Facebook" class="social-icon">
             </a>
-            <a href="#" class="social-link whatsapp" title="WhatsApp" aria-label="WhatsApp">
-                <img src="10.jpeg" alt="WhatsApp" class="social-icon">
+            <a href="https://www.youtube.com/@startupforge1.0" target="_blank" rel="noopener noreferrer" class="social-link youtube" title="YouTube" aria-label="YouTube">
+                <img src="10.jpeg" alt="YouTube" class="social-icon">
             </a>
         </div>
     </div>
@@ -1701,6 +1740,18 @@
         <a href="#challenge" class="notice-link">View details</a>
         <button class="notice-close" aria-label="Dismiss">×</button>
     </div>
+</div>
+
+<div id="notice-bar-3" class="notice-bar" role="region" aria-label="Notification">
+    <div class="notice-text">🔥 Limited slots available! Secure your registration today.</div>
+    <div class="notice-actions">
+        <a href="https://forms.gle/sAU7XEadHho4wsWS6" target="_blank" rel="noopener noreferrer" class="notice-link">Register now</a>
+        <button class="notice-close" aria-label="Dismiss">×</button>
+    </div>
+</div>
+
+<div class="bottom-image-section">
+    <img src="3.jpeg" alt="Featured Image" class="bottom-full-image">
 </div>
 
 <script>
